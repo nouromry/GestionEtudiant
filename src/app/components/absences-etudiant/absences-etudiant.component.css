@@ -1,0 +1,130 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #AF9CBD;
+  }
+  
+  table th, table td {
+    border: 3px solid #74647F;
+    padding: 8px;
+    text-align: left;
+    text-decoration-color: white;
+    
+  }
+  .etu{
+    background-color: #ECE2F4;
+}
+  table th {
+    background-color: #74647F;
+  }
+  
+  button {
+    margin-right: 8px;
+  }
+  
+  form {
+    margin-top: 16px;
+  }
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .form-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  .form-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+ 
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .form-group input[type="date"],
+  .form-group select {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+  }
+  
+  .form-group input[type="checkbox"] {
+    margin-left: 10px;
+  }
+  
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+ 
+  button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #74647F;
+    color: white
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #565e64;
+  }
+  
+  @media (max-width: 576px) {
+    .form-card {
+      padding: 15px;
+      width: 90%;
+    }
+  
+    .form-actions {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+  #searchDate {
+    width: 250px;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }

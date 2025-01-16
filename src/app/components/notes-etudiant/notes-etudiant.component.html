@@ -1,0 +1,102 @@
+<div *ngIf="etudiantId !== null">
+  <h2>Notes de l'étudiant {{ etudiantId }}</h2>
+
+  <!-- Notes Table -->
+  <table *ngIf="notes.length > 0">
+    <thead>
+      <tr>
+        <th>Matière</th>
+        <th>DS</th>
+        <th>Examen</th>
+        <th>Coefficient</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let note of notes">
+        <td>{{ note.matiere.nom }}</td>
+        <td>{{ note.ds }}</td>
+        <td>{{ note.examen }}</td>
+        <td>{{ note.coeficient }}</td>
+        <td>
+          <button (click)="setUpdateNoteForm(note)">Modifier</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="notes.length === 0">Pas de notes disponibles pour cet étudiant.</div>
+
+  <!-- Add Note Form -->
+  <div *ngIf="updateNoteData.id === null" class="form-container">
+    <div class="form-card">
+      <h3 class="form-title">Ajouter Note</h3>
+      <form (ngSubmit)="addNote()">
+        <div class="form-group">
+          <label for="matiere">Matière:</label>
+          <select [(ngModel)]="newNoteData.matiereId" name="matiereId" required>
+            <option *ngFor="let matiere of matieres" [value]="matiere.id">
+              {{ matiere.nom }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="ds">Note DS:</label>
+          <input [(ngModel)]="newNoteData.ds" name="ds" type="number" required />
+        </div>
+
+        <div class="form-group">
+          <label for="examen">Note Examen:</label>
+          <input [(ngModel)]="newNoteData.examen" name="examen" type="number" required />
+        </div>
+
+        <div class="form-group">
+          <label for="coeficient">Coefficient:</label>
+          <input [(ngModel)]="newNoteData.coeficient" name="coeficient" type="number" required />
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Ajouter Note</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Update Note Form -->
+  <div *ngIf="updateNoteData.id !== null" class="form-container">
+    <div class="form-card">
+      <h3 class="form-title">Mettre à jour Note</h3>
+      <form (ngSubmit)="updateNote()">
+        <div class="form-group">
+          <label for="matiere">Matière:</label>
+          <select [(ngModel)]="updateNoteData.matiereId" name="matiereId" required>
+            <option *ngFor="let matiere of matieres" [value]="matiere.id">
+              {{ matiere.nom }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="ds">Note DS:</label>
+          <input [(ngModel)]="updateNoteData.ds" name="ds" type="number" required />
+        </div>
+
+        <div class="form-group">
+          <label for="examen">Note Examen:</label>
+          <input [(ngModel)]="updateNoteData.examen" name="examen" type="number" required />
+        </div>
+
+        <div class="form-group">
+          <label for="coeficient">Coefficient:</label>
+          <input [(ngModel)]="updateNoteData.coeficient" name="coeficient" type="number" required />
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Mettre à jour Note</button>
+          <button type="button" class="btn" (click)="cancelUpdate()">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

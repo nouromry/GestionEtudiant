@@ -1,0 +1,119 @@
+<h1>Absences de l'Étudiant</h1>
+
+<div class="search-bar">
+  <label for="searchDate">Filtrer par date :</label>
+  <input
+    id="searchDate"
+    type="date"
+    [(ngModel)]="searchDate"
+    (ngModelChange)="filterAbsences()"
+    class="form-control"
+  />
+</div>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Matière</th>
+      <th>Date</th>
+      <th>Justifiée</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let absence of filteredAbsences">
+      <td>{{ absence.matiere.nom }}</td>
+      <td>{{ absence.date | date: 'shortDate' }}</td>
+      <td>{{ absence.justifiee ? 'Oui' : 'Non' }}</td>
+      <td>
+        <button class="btn btn-warning" (click)="setUpdateAbsenceForm(absence)">
+          Modifier
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div *ngIf="eliminated" class="alert alert-danger">
+  <p>L'étudiant est éliminé pour cause de plus de 6 absences dans une matière.</p>
+</div>
+
+
+<div *ngIf="!isEditing" class="form-container">
+  <div class="form-card">
+    <h3 class="form-title">Ajouter une Absence</h3>
+    <form (ngSubmit)="addAbsence()">
+      <div class="form-group">
+        <label for="matiere">Matière:</label>
+        <select
+          id="matiere"
+          [(ngModel)]="newAbsence.matiereId"
+          name="matiereId"
+          required
+        >
+          <option *ngFor="let matiere of matieres" [value]="matiere.id">
+            {{ matiere.nom }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input
+          id="date"
+          type="date"
+          [(ngModel)]="newAbsence.date"
+          name="date"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>
+          Justifiée:
+          <input type="checkbox" [(ngModel)]="newAbsence.justifiee" name="justifiee" />
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn">Ajouter Absence</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="isEditing" class="form-container">
+  <div class="form-card">
+    <h3 class="form-title">Modifier une Absence</h3>
+    <form (ngSubmit)="updateAbsence()">
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input
+          id="date"
+          type="date"
+          [(ngModel)]="updateAbsenceData.date"
+          name="date"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>
+          Justifiée:
+          <input
+            type="checkbox"
+            [(ngModel)]="updateAbsenceData.justifiee"
+            name="justifiee"
+          />
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn">Modifier Absence</button>
+        <button type="button" (click)="cancelEdit()" class="btn-secondary">Annuler</button>
+      </div>
+    </form>
+  </div>
+</div>

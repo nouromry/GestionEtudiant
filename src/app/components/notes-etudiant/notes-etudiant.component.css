@@ -1,0 +1,82 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #AF9CBD;
+}
+
+table th, table td {
+  border: 3px solid #74647F;
+  padding: 8px;
+  text-align: left;
+  text-decoration-color: white;
+  
+}
+.etu{
+  background-color: #ECE2F4;
+}
+table th {
+  background-color: #74647F;
+}
+
+button {
+  margin-right: 8px;
+}
+
+form {
+  margin-top: 16px;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+}
+button {
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: #74647F;
+  color: white
+}
+
+.form-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+

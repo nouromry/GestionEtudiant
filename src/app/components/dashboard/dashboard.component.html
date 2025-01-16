@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="sidebar col-md-3 col-lg-2 bg-dark">
+      <nav>
+        <h1>EtudTrack</h1>
+        <ul class="list-unstyled">
+          <li><a routerLink="/etudiants" routerLinkActive="active">Liste des étudiants</a></li>
+          <li><a routerLink="/matieres" routerLinkActive="active">Matières</a></li>
+          
+        </ul>
+      </nav>
+    </div>
+    
+ 
+    <div id="content" class="content col-md-9 ms-sm-auto col-lg-10 px-md-4" >
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

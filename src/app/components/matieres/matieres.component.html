@@ -1,0 +1,97 @@
+<div>
+  <h2>Liste des Matières</h2>
+
+  <!-- Search Bar -->
+  <div>
+    <label for="search">Rechercher :</label>
+    <input
+      id="search"
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="filterMatieres()"
+      placeholder="Rechercher par nom, semestre, ou module"
+    />
+  </div>
+
+  <div>
+    <label for="filter">Filtrer par :</label>
+    <select id="filter" [(ngModel)]="filterBy" (change)="filterMatieres()">
+      <option value="nom">Nom</option>
+      <option value="semester">Semestre</option>
+      <option value="module">Module</option>
+    </select>
+  </div>
+
+  <!-- Table of Matieres -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Sémestre</th>
+        <th>Module</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let matiere of filteredMatieres">
+        <td>{{ matiere.id }}</td>
+        <td>{{ matiere.nom }}</td>
+        <td>{{ matiere.semester }}</td>
+        <td>{{ matiere.module }}</td>
+        <td>
+          <button (click)="setEditMatiere(matiere)">Modifier</button>
+          <button (click)="deleteMatiere(matiere.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Edit Form -->
+  <div class="form-container">
+    <!-- Edit Form -->
+    <div *ngIf="editMatiereData" class="form-card">
+      <h3 class="form-title">Modifier Matière</h3>
+      <form (ngSubmit)="editMatiere()">
+        <div class="form-group">
+          <label for="editNom">Nom:</label>
+          <input id="editNom" [(ngModel)]="editMatiereData.nom" name="editNom" required />
+        </div>
+        <div class="form-group">
+          <label for="editSemester">Semestre:</label>
+          <input id="editSemester" [(ngModel)]="editMatiereData.semester" name="editSemester" type="number" required />
+        </div>
+        <div class="form-group">
+          <label for="editModule">Module:</label>
+          <input id="editModule" [(ngModel)]="editMatiereData.module" name="editModule" required />
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn">Enregistrer</button>
+          <button type="button" (click)="cancelEdit()" class="btn btn-secondary">Annuler</button>
+        </div>
+      </form>
+    </div>
+  
+    <!-- Add Form -->
+    <div class="form-card">
+      <h3 class="form-title">Ajouter Matière</h3>
+      <form (ngSubmit)="addMatiere()">
+        <div class="form-group">
+          <label for="newNom">Nom:</label>
+          <input id="newNom" [(ngModel)]="newMatiere.nom" name="newNom" required />
+        </div>
+        <div class="form-group">
+          <label for="newSemester">Sémestre:</label>
+          <input id="newSemester" [(ngModel)]="newMatiere.semester" name="newSemester" type="number" required />
+        </div>
+        <div class="form-group">
+          <label for="newModule">Module:</label>
+          <input id="newModule" [(ngModel)]="newMatiere.module" name="newModule" required />
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn">Ajouter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
